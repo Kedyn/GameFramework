@@ -5,7 +5,7 @@ var tsify = require("tsify");
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
-var paths = ['src/*.html,src/assets/*'];
+var paths = ['src/*.html','src/assets/*'];
 
 gulp.task("copy-html-and-assets", function () {
     return gulp.src(paths)

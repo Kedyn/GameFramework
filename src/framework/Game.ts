@@ -10,7 +10,7 @@ interface GameOptions {
         width?: number,
         height?: number,
     },
-    version: string
+    version?: string
 }
 
 const DEFAULT_GAME_OPTIONS: GameOptions = {
