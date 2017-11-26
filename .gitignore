@@ -1,7 +1,5 @@
 # Excluding files created by npm
 node_modules/
-*.js
-*.js.map
 npm-debug.log
 
 # Windows image file caches
