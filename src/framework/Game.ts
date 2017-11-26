@@ -32,7 +32,7 @@ class Game {
         }
         return Game.instance;
     }
-    
+
     public create(options?: GameOptions): boolean {
         if (options) this.checkOptions(options);
         else this.options = DEFAULT_GAME_OPTIONS;
