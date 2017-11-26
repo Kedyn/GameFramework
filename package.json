@@ -1,33 +1,36 @@
 {
-  "name": "simple-framework",
-  "version": "0.0.1",
+  "name": "simplegameframework",
+  "version": "0.0.2",
   "description": "Simple TypeScript Game Framework for HTML5 Canvas.",
-  "main": "gulpfile.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kedyn/simpleGameFramework.git"
   },
   "keywords": [
     "simple",
     "game",
     "framework",
-    "typescript"
+    "typescript",
+    "javascript",
+    "canvas"
   ],
   "author": "Kedyn Macedonio",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/Kedyn/simpleFramework"
+  "bugs": {
+    "url": "https://github.com/Kedyn/simpleGameFramework/issues"
   },
+  "homepage": "https://github.com/Kedyn/simpleGameFramework#readme",
   "dependencies": {
-    "browserify": "^13.1.1",
+    "browserify": "^14.5.0",
     "gulp": "^3.9.1",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-uglify": "^2.0.0",
-    "tsify": "^2.0.3",
-    "typescript": "^2.0.10",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "tsify": "^3.0.3",
+    "typescript": "^2.6.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
