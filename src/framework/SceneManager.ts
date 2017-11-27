@@ -23,7 +23,16 @@ class SceneManager {
             
             this.input_handler = true;
         }
-        this.scenes.push(scene);
+        if (this.onCurrentSceneExit()) {
+            //SimpleInputHandler.removeListens();
+            this.scenes.push(scene);
+        }
+        else {
+            SimpleGame.log("Error exiting scene " + this.currentScene().id);
+        }
+        if (!this.onCurrentSceneEnter()) {
+            SimpleGame.log("Error while entering scene");            
+        }
     }
 
     public changeScene(scene: Scene): void {
@@ -31,8 +40,8 @@ class SceneManager {
             if (this.scenes[this.scenes.length - 1].id != scene.id) {
                 this.scenes.push(scene);
                 if (this.onCurrentSceneExit()) {
-                    this.scenes.splice(this.scenes.length - 2, 1);
                     //SimpleInputHandler.removeListens();
+                    this.scenes.splice(this.scenes.length - 2, 1);
                 }
                 else {
                     SimpleGame.log("Error exiting scene " + this.currentScene().id);
@@ -53,8 +62,11 @@ class SceneManager {
     public popScene(): void {
         if (this.scenes.length > 1) {
             if (this.onCurrentSceneExit()) {
-                this.scenes.pop();
                 //SimpleInputHandler.removeListens();
+                this.scenes.pop();
+                if (!this.onCurrentSceneEnter()) {
+                    SimpleGame.log("Error while entering scene");            
+                }
             }
         }
     }
@@ -112,23 +124,28 @@ class SceneManager {
 
     private onCurrentSceneExit(): boolean {
         let exit = false;
-        if (this.currentScene().onExit()) {
-            exit = true;
-            let i = 0;
-            let looping = true;
-            let game_objects = this.currentScene().game_objects;
-            while (looping) {
-                if (i < game_objects.length) {
-                    if (!game_objects[i].onExit()) {
-                        exit = false;
+        if (this.scenes.length) {
+            if (this.currentScene().onExit()) {
+                exit = true;
+                let i = 0;
+                let looping = true;
+                let game_objects = this.currentScene().game_objects;
+                while (looping) {
+                    if (i < game_objects.length) {
+                        if (!game_objects[i].onExit()) {
+                            exit = false;
+                            looping = false;
+                        }
+                    }
+                    else {
                         looping = false;
                     }
+                    i++;
                 }
-                else {
-                    looping = false;
-                }
-                i++;
             }
+        }
+        else {
+            exit = true;
         }
         return exit;
     }

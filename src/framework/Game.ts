@@ -37,9 +37,7 @@ class Game {
         if (options) this.checkOptions(options);
         else this.options = DEFAULT_GAME_OPTIONS;
 
-        if (this.checkCanvas()) {
-            this.canvas.getContext("2d").transform(1, 0, 0, -1, 0, this.canvas.height);
-            
+        if (this.checkCanvas()) {            
             this.time = new Date();
 
             this.frame_counter = 0;
@@ -103,7 +101,7 @@ class Game {
             canvas = document.createElement("canvas");
             (<HTMLCanvasElement>canvas).width = this.options.canvas.width;
             (<HTMLCanvasElement>canvas).height = this.options.canvas.height;
-            document.getElementsByTagName("body")[0].appendChild(canvas);
+            document.getElementsByTagName("body")[0].insertBefore(canvas, document.body.firstChild);
         }
         if (canvas.tagName === "CANVAS") {
             this.canvas = <HTMLCanvasElement>canvas;

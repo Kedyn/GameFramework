@@ -1,6 +1,6 @@
 {
   "name": "simplegameframework",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "description": "Simple TypeScript Game Framework for HTML5 Canvas.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
